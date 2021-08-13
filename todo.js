@@ -26,7 +26,7 @@ while (true) {
 
 function prints() {
     console.log("----todoリスト----\n何したいですか？\n");
-    if (todoList[0] != null) {
+    if (todoList.length != 0) {
         console.log("タスクが「" + todoList.length + "」個残っています");
     }
     for (i = 0; i < choices.length; i++) {
