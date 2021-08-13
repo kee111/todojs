@@ -1,38 +1,27 @@
-let name;
+const prompt = require("prompt-sync")();
+const choices = ["タスク追加", "タスク削除", "タスク一覧", "プログラム終了"];
+let num;
 
-while (name!=4) {
-    console.log("----todoリスト----\n何したいですか？");
-    console.log("1:タスク追加");
-    console.log("2:タスク削除");
-    console.log("3:タスク一覧");
-    console.log("4:プログラム終了");
+while (true) {
+    console.log("----todoリスト----\n何したいですか？\n");
+    for (i = 0; i < choices.length; i++) {
+        console.log(i + 1 + ":" + choices[i]);
+    }
+    num = prompt("半角数字で選択してください");
 
-
-(async function main() {
-    const name = await readUserInput("What is your name? ");
-    console.log(`Hello, ${name}!`);
-})();
-
-
-
-}
-function readUserInput(question) {
-    const readline = require("readline").createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-
-    return new Promise((resolve, reject) => {
-        readline.question(question, (answer) => {
-            resolve(answer);
-            readline.close();
-        });
-    });
-}
-
-
-
-
-
-
-
+    switch(num){
+        case "1":
+            console.log(1);
+            break;
+        case "2":
+            console.log(2);
+            break;
+        case "3":
+            console.log(3);
+            break;
+        case "4":
+            return;
+        default :
+            console.log("ちゃんと入力して");
+    }
+}ï

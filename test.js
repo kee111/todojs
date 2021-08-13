@@ -1,31 +1,18 @@
-// const readline = require("readline").createInterface({
-//     input: process.stdin,
-//     output: process.stdout,
-// });
+// const prompt = require('prompt-sync')();
+ 
+// const name = prompt('What is your name?');
+// console.log(`Hey there ${name}`);
 
-// readline.question("What is your name? ", (answer) => {
-//     console.log(`Hello, ${answer}!`);
-//     readline.close();
-// });
+// let i = 0;
+const choices = ["タスク追加", "タスク削除", "タスク一覧", "プログラム終了"];
 
 
-
-function readUserInput(question) {
-    const readline = require("readline").createInterface({
-        input: process.stdin,
-        output: process.stdout,
-    });
-
-    return new Promise((resolve, reject) => {
-        readline.question(question, (answer) => {
-            resolve(answer);
-            readline.close();
-        });
-    });
-}
+// choices.forEach((choice) => {
+//     i++
+//         console.log(i+":"+choice);
+//     });
 
 
-(async function main() {
-    const name = await readUserInput("What is your name? ");
-    console.log(`Hello, ${name}!`);
-})();
+    for(i=0;i<choices.length;i++){
+        console.log((i+1)+":"+choices[i])
+    }

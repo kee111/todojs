@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kee111/todojs/issues"
   },
-  "homepage": "https://github.com/kee111/todojs#readme"
+  "homepage": "https://github.com/kee111/todojs#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
 }
