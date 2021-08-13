@@ -2,6 +2,7 @@ const prompt = require("prompt-sync")();
 const choices = ["タスク追加", "タスク削除", "タスク一覧", "プログラム終了"];
 const todoList = [];
 
+// main処理
 while (true) {
     switch (prints()) {
         case "1":
@@ -24,6 +25,7 @@ while (true) {
     }
 }
 
+// 表示、入力受け取り用の関数
 function prints() {
     console.log("----todoリスト----\n何したいですか？\n");
     if (todoList.length != 0) {
@@ -35,11 +37,13 @@ function prints() {
     return prompt("半角数字で選択してください:");
 }
 
+// タスク追加用の関数
 function addTask() {
     todoList.push(prompt("追加するタスクを入力してください:"));
     console.log("タスクが追加されました\n\n\n\n");
 }
 
+// タスク削除用の関数
 function deleteTask() {
     viewTask();
     console.log("どのタスクを削除しますか？");
@@ -47,6 +51,7 @@ function deleteTask() {
     console.log("タスクが削除されました\n------------------\n\n\n");
 }
 
+// タスク確認用の関数
 function viewTask() {
     let count = 0;
     console.log("\n\n\n------------------");
