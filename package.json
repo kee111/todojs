@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kee111/todojs#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "prompt-sync": "^4.2.0"
   }
 }

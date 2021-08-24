@@ -1,27 +1,43 @@
 const prompt = require("prompt-sync")();
+const axios = require("axios");
 const choices = ["タスク追加", "タスク削除", "タスク一覧", "プログラム終了"];
-const todoList = [];
 
-// main処理
-while (true) {
-    switch (prints()) {
-        case "1":
-            addTask();
-            break;
+// todoListを配列初期化する
+let todoList = [];
 
-        case "2":
-            deleteTask();
-            break;
+// axiosでデータをとってくる
+axios
+    .get("https://api.jsonbin.io/b/6118dc5ed5667e403a431f86/latest")
+    // 非同期処理
+    .then((res) => {
+        // responseにサーバーのデータが入るからそれを代入して
+        todoList = res.data;
+        // todoリストを始める
+        run_todo_list();
+    });
 
-        case "3":
-            viewTask();
-            break;
+function run_todo_list() {
+    // main処理
+    while (true) {
+        switch (prints()) {
+            case "1":
+                addTask();
+                break;
 
-        case "4":
-            return;
+            case "2":
+                deleteTask();
+                break;
 
-        default:
-            console.log("ちゃんと入力してよ〜ん( ；∀；)");
+            case "3":
+                viewTask();
+                break;
+
+            case "4":
+                return;
+
+            default:
+                console.log("ちゃんと入力してよ〜ん( ；∀；)");
+        }
     }
 }
 
@@ -40,6 +56,8 @@ function prints() {
 // タスク追加用の関数
 function addTask() {
     todoList.push(prompt("追加するタスクを入力してください:"));
+    put_data();
+
     console.log("タスクが追加されました\n\n\n\n");
 }
 
@@ -48,6 +66,9 @@ function deleteTask() {
     viewTask();
     console.log("どのタスクを削除しますか？");
     todoList.splice(parseInt(prompt("半角数字で選択してください:")) - 1, 1);
+
+    put_data();
+
     console.log("タスクが削除されました\n------------------\n\n\n");
 }
 
@@ -61,4 +82,9 @@ function viewTask() {
         console.log(count + ":" + todo);
     });
     console.log("\n------------------\n\n");
+}
+
+// 非同期でtodoListのデータをPUT送信する
+function put_data() {
+    axios.put("https://api.jsonbin.io/b/6118dc5ed5667e403a431f86", todoList);
 }
